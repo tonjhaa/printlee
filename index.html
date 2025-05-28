@@ -5,6 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Printlee – Lloyd Poster</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        .slideshow-container { position: relative; max-width: 600px; margin: 1.5rem auto; }
+        .mySlides { display: none; }
+        .prev, .next {
+            cursor: pointer; position: absolute; top: 50%; width: auto; margin-top: -22px;
+            padding: 16px; color: #fff; background: rgba(0,0,0,0.5); border-radius: 3px;
+            user-select: none;
+        }
+        .prev { left: 0; }
+        .next { right: 0; }
+    </style>
 </head>
 <body>
     <header>
@@ -16,7 +27,17 @@
         <section class="product">
             <h2>The Lloyd Poster</h2>
             <p class="tagline">“Du spurt itj — æ svart.”</p>
-            <img src="assets/lloyd_preview.png" alt="Preview of Lloyd Poster" class="product-image">
+            <div class="slideshow-container">
+                <div class="mySlides">
+                    <img src="assets/lloyd_print.png" alt="Lloyd Poster" class="product-image">
+                </div>
+                <div class="mySlides">
+                    <img src="assets/lloyd_room.png" alt="Lloyd Poster in living room" class="product-image">
+                </div>
+                <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                <a class="next" onclick="plusSlides(1)">&#10095;</a>
+            </div>
+
             <p class="description">
                 A bold typographic digital poster in A3 format (PDF). Perfect for framing or personal display. Instant download after purchase.
             </p>
@@ -28,5 +49,21 @@
     <footer>
         <p>&copy; 2025 Printlee. All rights reserved.</p>
     </footer>
+
+    <script>
+        let slideIndex = 1;
+        showSlides(slideIndex);
+        function plusSlides(n) { showSlides(slideIndex += n); }
+        function showSlides(n) {
+            let i;
+            let slides = document.getElementsByClassName("mySlides");
+            if (n > slides.length) { slideIndex = 1; }
+            if (n < 1) { slideIndex = slides.length; }
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            slides[slideIndex - 1].style.display = "block";
+        }
+    </script>
 </body>
 </html>
